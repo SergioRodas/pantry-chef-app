@@ -1,50 +1,114 @@
-# Welcome to your Expo app 👋
+# 🧑‍🍳 Pantry Chef
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native application that helps you find recipes based on your available ingredients.
 
-## Get started
+## 🚀 Features
 
-1. Install dependencies
+- Modern UI with light/dark mode support
+- Type-safe development with TypeScript
+- Clean Architecture structure
+- Themed components system
+- Responsive design
 
-   ```bash
-   npm install
-   ```
+## 🛠 Tech Stack
 
-2. Start the app
+- React Native
+- Expo
+- TypeScript
+- React Navigation
+- Custom Theming System
 
-   ```bash
-    npx expo start
-   ```
+## 📝 Development Practices
 
-In the output, you'll find options to open the app in a
+### Conventional Commits
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+We follow [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages. This leads to more readable messages that are easy to follow when looking through the project history.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Format: `type(scope): description`
 
-## Get a fresh project
+Types:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation only changes
+- `style`: Changes that do not affect the meaning of the code
+- `refactor`: Code change that neither fixes a bug nor adds a feature
+- `test`: Adding missing tests or correcting existing tests
+- `chore`: Changes to the build process or auxiliary tools
 
-When you're ready, run:
-
+Example:
 ```bash
-npm run reset-project
+feat(theme): add dark mode support
+fix(input): resolve text color in dark mode
+docs(readme): update installation steps
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🏗 Project Structure
 
-## Learn more
+```
+/
+├── app/                 # Expo Router configuration
+├── assets/             # Static assets
+└── src/
+   └── presentation/   # UI Layer
+      ├── components/
+   ├── components/ # Reusable UI components
+   ├── hooks/ # Custom React hooks
+   ├── screens/ # Screen components
+   └── styles/ # Theme and styling
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🚦 Getting Started
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/pantry-chef.git
+```
 
-## Join the community
+2. Install dependencies:
+```bash
+npm install
+```
 
-Join our community of developers creating universal apps.
+3. Start the development server:
+```bash
+npm start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+4. Run on your preferred platform:
+```bash
+# iOS
+npm run ios
+
+# Android
+npm run android
+
+# Web
+npm run web
+```
+
+## 🎨 Theming
+
+The app includes a comprehensive theming system with support for:
+- Light/Dark mode
+- Consistent spacing
+- Typography scales
+- Color palettes
+- Component-level theming
+
+## 📱 Current Features
+
+- Search interface for ingredients
+- Responsive design
+- Dark mode support
+- Themed components
+
+## 🔜 Coming Soon
+
+- Recipe search functionality
+- Ingredient suggestions
+- Recipe details view
+- Favorites system
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
