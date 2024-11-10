@@ -1,8 +1,8 @@
+import { ThemedText } from '@/presentation/components/ThemedText';
+import { ThemedView } from '@/presentation/components/ThemedView';
 import { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import { useColorScheme } from '../hooks/useColorScheme';
-import { ThemedText } from '@/presentation/components/ThemedText';
-import { ThemedView } from '@/presentation/components/ThemedView';
 import { theme } from '../styles/theme';
 
 export function SearchIngredient() {
