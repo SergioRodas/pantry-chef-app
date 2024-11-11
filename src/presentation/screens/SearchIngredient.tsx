@@ -8,6 +8,7 @@ import { useColorScheme } from '../hooks/useColorScheme';
 import { useSearchIngredient } from '../hooks/useSearchIngredient';
 import { theme } from '../styles/theme';
 import { createWebStyles } from '../utils/platformStyles';
+import { router } from 'expo-router';
 
 type PressableStateWithHover = PressableStateCallbackType & {
     hovered?: boolean;
@@ -68,7 +69,7 @@ export function SearchIngredient() {
                 styles(colorScheme).mealItem,
                 hovered && styles(colorScheme).mealItemHovered
             ]}
-            onPress={() => {}}
+            onPress={() => router.push(`/meal/${item.id}`)}
         >
             <Image 
                 source={{ uri: item.thumbnail }} 

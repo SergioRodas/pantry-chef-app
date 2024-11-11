@@ -39,7 +39,11 @@ export const theme = {
     },
     input: {
       fontSize: 16,
-    }
+    },
+    button: {
+      fontSize: 16,
+      fontWeight: '600',
+    },
   },
   shadows: {
     default: Platform.select({
@@ -63,6 +67,7 @@ export const theme = {
     md: 8,
     lg: 16,
     xl: 24,
+    full: 9999,
   }
 } as const;
 
