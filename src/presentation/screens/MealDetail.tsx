@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { ScrollView, StyleSheet, Image, View, Pressable, Linking } from 'react-native';
-import { ThemedView } from '../components/ThemedView';
+import { Image, Linking, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { ThemedText } from '../components/ThemedText';
+import { ThemedView } from '../components/ThemedView';
+import { useColorScheme } from '../hooks/useColorScheme';
 import { useMealDetail } from '../hooks/useMealDetail';
 import { theme } from '../styles/theme';
-import { useColorScheme } from '../hooks/useColorScheme';
-import { ActivityIndicator } from 'react-native';
 import { createWebStyles } from '../utils/platformStyles';
 
 interface MealDetailProps {

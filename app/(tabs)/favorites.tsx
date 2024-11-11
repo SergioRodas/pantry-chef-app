@@ -1,8 +1,8 @@
-import { ThemedView } from '@/presentation/components/ThemedView';
 import { ThemedText } from '@/presentation/components/ThemedText';
-import { StyleSheet } from 'react-native';
-import { theme } from '@/presentation/styles/theme';
+import { ThemedView } from '@/presentation/components/ThemedView';
 import { useColorScheme } from '@/presentation/hooks/useColorScheme';
+import { theme } from '@/presentation/styles/theme';
+import { StyleSheet } from 'react-native';
 
 export default function FavoritesScreen() {
     const colorScheme = useColorScheme() as 'light' | 'dark';

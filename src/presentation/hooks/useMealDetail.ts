@@ -1,7 +1,7 @@
-import { useState, useCallback, useMemo } from 'react';
-import { MealDetailState, MealDetailViewModel } from '../viewModels/MealDetailViewModel';
 import { GetMealDetailUseCaseImpl } from '@/application/useCases/GetMealDetailUseCaseImpl';
 import { MealRepository } from '@/infrastructure/repositories/MealRepository';
+import { useCallback, useMemo, useState } from 'react';
+import { MealDetailState, MealDetailViewModel } from '../viewModels/MealDetailViewModel';
 
 export const useMealDetail = (id: string) => {
     const [state, setState] = useState<MealDetailState>({

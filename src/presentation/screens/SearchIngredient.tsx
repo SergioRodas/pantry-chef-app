@@ -1,6 +1,7 @@
 import { Ingredient, Meal } from '@/domain/entities';
 import { ThemedText } from '@/presentation/components/ThemedText';
 import { ThemedView } from '@/presentation/components/ThemedView';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { ActivityIndicator, FlatList, Image, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { PressableStateCallbackType } from 'react-native';
@@ -8,7 +9,6 @@ import { useColorScheme } from '../hooks/useColorScheme';
 import { useSearchIngredient } from '../hooks/useSearchIngredient';
 import { theme } from '../styles/theme';
 import { createWebStyles } from '../utils/platformStyles';
-import { router } from 'expo-router';
 
 type PressableStateWithHover = PressableStateCallbackType & {
     hovered?: boolean;

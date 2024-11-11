@@ -1,11 +1,11 @@
-import { MealDetail } from '@/presentation/screens/MealDetail';
-import { Stack, useLocalSearchParams, router } from 'expo-router';
-import { useColorScheme } from '@/presentation/hooks/useColorScheme';
-import { theme } from '@/presentation/styles/theme';
-import { ThemedView } from '@/presentation/components/ThemedView';
 import { ThemedText } from '@/presentation/components/ThemedText';
-import { StyleSheet, Pressable } from 'react-native';
+import { ThemedView } from '@/presentation/components/ThemedView';
+import { useColorScheme } from '@/presentation/hooks/useColorScheme';
+import { MealDetail } from '@/presentation/screens/MealDetail';
+import { theme } from '@/presentation/styles/theme';
 import { FontAwesome } from '@expo/vector-icons';
+import { Stack, router, useLocalSearchParams } from 'expo-router';
+import { Pressable, StyleSheet } from 'react-native';
 
 export default function MealScreen() {
     const { id } = useLocalSearchParams<{ id: string }>();
