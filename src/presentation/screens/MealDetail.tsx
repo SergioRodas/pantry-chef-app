@@ -1,3 +1,4 @@
+import { FontAwesome } from '@expo/vector-icons';
 import { useEffect } from 'react';
 import { Image, Linking, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { ActivityIndicator } from 'react-native';
@@ -5,6 +6,7 @@ import { ThemedText } from '../components/ThemedText';
 import { ThemedView } from '../components/ThemedView';
 import { useColorScheme } from '../hooks/useColorScheme';
 import { useMealDetail } from '../hooks/useMealDetail';
+import { useFavoritesStore } from '../stores/useFavoritesStore';
 import { theme } from '../styles/theme';
 import { createWebStyles } from '../utils/platformStyles';
 
@@ -15,10 +17,20 @@ interface MealDetailProps {
 export function MealDetail({ id }: MealDetailProps) {
     const { meal, isLoading, error, loadMealDetail } = useMealDetail(id);
     const colorScheme = useColorScheme() as 'light' | 'dark';
+    const { addFavorite, removeFavorite, isFavorite } = useFavoritesStore();
 
     useEffect(() => {
         loadMealDetail();
     }, [loadMealDetail]);
+
+    const toggleFavorite = () => {
+        if (!meal) return;
+        if (isFavorite(meal.id)) {
+            removeFavorite(meal.id);
+        } else {
+            addFavorite(meal);
+        }
+    };
 
     if (isLoading) {
         return (
@@ -87,6 +99,17 @@ export function MealDetail({ id }: MealDetailProps) {
                         </ThemedText>
                     </Pressable>
                 )}
+
+                <Pressable
+                    style={styles(colorScheme).favoriteButton}
+                    onPress={toggleFavorite}
+                >
+                    <FontAwesome 
+                        name={isFavorite(id) ? "heart" : "heart-o"} 
+                        size={24} 
+                        color={theme.colors[colorScheme].primary} 
+                    />
+                </Pressable>
             </ThemedView>
         </ScrollView>
     );
@@ -96,6 +119,7 @@ const styles = (colorScheme: 'light' | 'dark') => StyleSheet.create({
     container: {
         flex: 1,
         padding: theme.spacing.lg,
+        paddingTop: theme.spacing.xl,
     },
     image: {
         width: '100%',
@@ -164,5 +188,14 @@ const styles = (colorScheme: 'light' | 'dark') => StyleSheet.create({
     error: {
         color: 'red',
         textAlign: 'center',
+    },
+    favoriteButton: {
+        position: 'absolute',
+        top: theme.spacing.xl,
+        right: theme.spacing.lg,
+        backgroundColor: theme.colors[colorScheme].surface,
+        padding: theme.spacing.md,
+        borderRadius: theme.radius.full,
+        ...theme.shadows.default,
     },
 }); 
