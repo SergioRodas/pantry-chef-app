@@ -69,7 +69,29 @@ git clone https://github.com/your-username/pantry-chef.git
 npm install
 ```
 
-3. Start the development server:
+3. Configure environment:
+   1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   
+   2. Find your local IP address:
+   ```bash
+   # On Windows
+   ipconfig
+   # Look for IPv4 Address under your active network adapter
+
+   # On macOS/Linux
+   ifconfig
+   # Look for inet under your active network adapter (usually en0 or wlan0)
+   ```
+
+   3. Update your `.env` file with your IP:
+   ```env
+   API_URL=http://your-ip:3000/api
+   ```
+
+4. Start the development server:
 ```bash
 npm start
 ```
