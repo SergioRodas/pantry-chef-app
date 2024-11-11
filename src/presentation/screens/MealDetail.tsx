@@ -75,7 +75,7 @@ export function MealDetail({ id }: MealDetailProps) {
                 )}
 
                 <ThemedText style={styles(colorScheme).sectionTitle}>Ingredients</ThemedText>
-                {meal.ingredients.map((ingredient, index) => (
+                {meal.ingredients.map((ingredient) => (
                     <ThemedText 
                         key={`${ingredient.name}-${ingredient.measure}`} 
                         style={styles(colorScheme).ingredient}
