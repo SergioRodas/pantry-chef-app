@@ -37,10 +37,15 @@
       "dist/**/*",
       "build/**/*",
       "coverage/**/*",
+      ".expo/**/*",
+      ".expo-shared/**/*",
+      ".vscode/**/*",
+      "*.log",
+      "package-lock.json",
       ".env",
       ".env.*",
-      "*.log",
-      "package-lock.json"
+      "android/**/*",
+      "ios/**/*"
     ]
   }
 }
