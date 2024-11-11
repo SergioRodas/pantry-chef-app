@@ -1,4 +1,5 @@
-import { Ingredient } from '@/domain/entities';
+import { Ingredient, Meal } from '@/domain/entities';
+import { IMealRepository } from '@/domain/repositories/IMealRepository';
 import { GetAllIngredientsUseCase, SearchIngredientsUseCase } from '@/domain/useCases/SearchIngredientsUseCase';
 
 export interface SearchIngredientState {
@@ -6,12 +7,15 @@ export interface SearchIngredientState {
     isLoading: boolean;
     error: string | null;
     searchResults: Ingredient[];
+    selectedIngredient: Ingredient | null;
+    meals: Meal[];
 }
 
 export class SearchIngredientViewModel {
     constructor(
         private getAllIngredientsUseCase: GetAllIngredientsUseCase,
         private searchIngredientsUseCase: SearchIngredientsUseCase,
+        private repository: IMealRepository,
         private setState: (state: Partial<SearchIngredientState>) => void
     ) {}
 
@@ -38,5 +42,36 @@ export class SearchIngredientViewModel {
                 searchResults: [] 
             });
         }
+    }
+
+    async selectIngredient(ingredient: Ingredient): Promise<void> {
+        try {
+            this.setState({ 
+                selectedIngredient: ingredient,
+                isLoading: true,
+                error: null,
+                searchResults: []
+            });
+            
+            const meals = await this.repository.getMealsByIngredient(ingredient.name);
+            this.setState({ 
+                meals,
+                isLoading: false
+            });
+        } catch (error) {
+            this.setState({ 
+                error: error instanceof Error ? error.message : 'An error occurred',
+                isLoading: false,
+                meals: []
+            });
+        }
+    }
+
+    clearSelection(): void {
+        this.setState({
+            selectedIngredient: null,
+            meals: [],
+            searchResults: []
+        });
     }
 } 

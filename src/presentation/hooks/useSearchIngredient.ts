@@ -1,5 +1,6 @@
 import { GetAllIngredientsUseCaseImpl } from '@/application/useCases/GetAllIngredientsUseCaseImpl';
 import { SearchIngredientsUseCaseImpl } from '@/application/useCases/SearchIngredientsUseCaseImpl';
+import { Ingredient } from '@/domain/entities';
 import { MealRepository } from '@/infrastructure/repositories/MealRepository';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SearchIngredientState, SearchIngredientViewModel } from '../viewModels/SearchIngredientViewModel';
@@ -9,7 +10,9 @@ export const useSearchIngredient = () => {
         ingredients: [],
         isLoading: true,
         error: null,
-        searchResults: []
+        searchResults: [],
+        selectedIngredient: null,
+        meals: []
     });
 
     const setPartialState = useCallback((newState: Partial<SearchIngredientState>) => {
@@ -20,6 +23,7 @@ export const useSearchIngredient = () => {
     const viewModel = useMemo(() => new SearchIngredientViewModel(
         new GetAllIngredientsUseCaseImpl(repository),
         new SearchIngredientsUseCaseImpl(repository),
+        repository,
         setPartialState
     ), [setPartialState, repository]);
 
@@ -31,6 +35,12 @@ export const useSearchIngredient = () => {
         ...state,
         searchIngredients: useCallback((query: string) => 
             viewModel.searchIngredients(query), 
+        [viewModel]),
+        selectIngredient: useCallback((ingredient: Ingredient) =>
+            viewModel.selectIngredient(ingredient),
+        [viewModel]),
+        clearSelection: useCallback(() => 
+            viewModel.clearSelection(),
         [viewModel])
     };
 }; 
