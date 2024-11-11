@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 // Estilos globales y tokens de diseño
 export const theme = {
   colors: {
@@ -40,13 +42,21 @@ export const theme = {
     }
   },
   shadows: {
-    default: {
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    }
+    default: Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+      },
+      android: {
+        elevation: 5,
+      },
+      web: {
+        boxShadow: '0px 2px 3.84px rgba(0, 0, 0, 0.25)',
+      },
+      default: {},
+    })
   },
   radius: {
     sm: 4,

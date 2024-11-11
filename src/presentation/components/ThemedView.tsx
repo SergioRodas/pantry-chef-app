@@ -1,12 +1,22 @@
-import { View, type ViewProps } from 'react-native';
-import { useColorScheme } from '../hooks/useColorScheme';
-import { theme } from '../styles/theme';
+import { View, ViewStyle } from 'react-native';
+import { useThemeColor } from '../hooks/useThemeColor';
 
-export type ThemedViewProps = ViewProps;
+interface ThemedViewProps {
+    style?: ViewStyle | ViewStyle[];
+    children: React.ReactNode;
+}
 
-export function ThemedView({ style, ...otherProps }: ThemedViewProps) {
-  const colorScheme = useColorScheme();
-  const backgroundColor = theme.colors[colorScheme].background;
-
-  return <View style={[{ backgroundColor }, style]} {...otherProps} />;
+export function ThemedView({ style, children }: ThemedViewProps) {
+    const backgroundColor = useThemeColor('background');
+    
+    return (
+        <View 
+            style={[
+                { backgroundColor },
+                style
+            ]}
+        >
+            {children}
+        </View>
+    );
 }
