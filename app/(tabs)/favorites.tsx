@@ -1,39 +1,10 @@
-import { ThemedText } from '@/presentation/components/ThemedText';
-import { ThemedView } from '@/presentation/components/ThemedView';
-import { useColorScheme } from '@/presentation/hooks/useColorScheme';
-import { theme } from '@/presentation/styles/theme';
-import { StyleSheet } from 'react-native';
+import { Favorites } from '@/presentation/screens/Favorites';
+import { View } from 'react-native';
 
 export default function FavoritesScreen() {
-    const colorScheme = useColorScheme() as 'light' | 'dark';
-
     return (
-        <ThemedView style={styles(colorScheme).container}>
-            <ThemedText style={styles(colorScheme).title}>
-                My Favorite Recipes
-            </ThemedText>
-            <ThemedText style={styles(colorScheme).subtitle}>
-                Coming soon...
-            </ThemedText>
-        </ThemedView>
+        <View style={{ flex: 1 }}>
+            <Favorites />
+        </View>
     );
-}
-
-const styles = (colorScheme: 'light' | 'dark') => StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: theme.spacing.lg,
-        backgroundColor: theme.colors[colorScheme].background,
-    },
-    title: {
-        ...theme.typography.title,
-        color: theme.colors[colorScheme].primary,
-        marginBottom: theme.spacing.md,
-    },
-    subtitle: {
-        ...theme.typography.subtitle,
-        color: theme.colors[colorScheme].secondary,
-    },
-}); 
+} 
