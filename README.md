@@ -1,61 +1,90 @@
 # 🧑‍🍳 Pantry Chef
 
-A React Native application that helps you find recipes based on your available ingredients.
+A React Native application that helps you find recipes based on your available ingredients, with a modern and responsive interface.
 
 ## 🚀 Features
 
-- Modern UI with light/dark mode support
-- Type-safe development with TypeScript
-- Clean Architecture structure
-- Themed components system
-- Responsive design
+- **Recipe Search**: Find recipes by ingredients with real-time suggestions
+- **Recipe Details**: Detailed view of recipes including:
+  - Ingredients and measurements
+  - Step-by-step instructions
+  - YouTube video links
+  - Category and area information
+  - Tags
+- **Favorites System**: Save and manage your favorite recipes
+- **Modern UI**: 
+  - Light/dark mode support
+  - Responsive design for mobile and web
+  - Smooth animations and transitions
+  - Hover effects on web
+- **Type-safe Development**: 
+  - Full TypeScript support
+  - Clean Architecture structure
+  - Themed components system
 
 ## 🛠 Tech Stack
 
 - React Native
-- Expo
+- Expo Router
 - TypeScript
-- React Navigation
+- Zustand (State Management)
 - Custom Theming System
+- React Navigation
+- AsyncStorage for persistence
 
-## 📝 Development Practices
+## 📱 Screens
 
-### Conventional Commits
+### 🔍 Search
+- Real-time ingredient search
+- Recipe suggestions based on ingredients
+- Clean and intuitive interface
 
-We follow [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages. This leads to more readable messages that are easy to follow when looking through the project history.
+### 📖 Recipe Details
+- High-quality recipe images
+- Detailed ingredients list
+- Step-by-step cooking instructions
+- YouTube video integration
+- Quick favorite toggle
+- Recipe tags and categories
 
-Format: `type(scope): description`
-
-Types:
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation only changes
-- `style`: Changes that do not affect the meaning of the code
-- `refactor`: Code change that neither fixes a bug nor adds a feature
-- `test`: Adding missing tests or correcting existing tests
-- `chore`: Changes to the build process or auxiliary tools
-
-Example:
-```bash
-feat(theme): add dark mode support
-fix(input): resolve text color in dark mode
-docs(readme): update installation steps
-```
+### ❤️ Favorites
+- Save favorite recipes
+- Quick access to saved recipes
+- Bulk clear option
+- Persistent storage
 
 ## 🏗 Project Structure
 
 ```
 /
-├── app/                 # Expo Router configuration
-├── assets/             # Static assets
+├── app/                # Expo Router configuration
+│   ├── (tabs)/        # Tab navigation
+│   └── meal/          # Recipe details routing
+├── assets/            # Static assets
 └── src/
-   └── presentation/   # UI Layer
-      ├── components/
-   ├── components/ # Reusable UI components
-   ├── hooks/ # Custom React hooks
-   ├── screens/ # Screen components
-   └── styles/ # Theme and styling
+    ├── domain/        # Business logic and entities
+    │   ├── entities/
+    │   └── repositories/
+    ├── data/          # Data layer
+    │   └── repositories/
+    └── presentation/  # UI Layer
+        ├── components/# Reusable UI components
+        ├── hooks/     # Custom React hooks
+        ├── screens/   # Screen components
+        ├── stores/    # Zustand stores
+        └── styles/    # Theme and styling
 ```
+
+## 🎨 Theming
+
+The app includes a comprehensive theming system with:
+- Automatic light/dark mode detection
+- Consistent spacing system
+- Typography scales
+- Color palettes
+- Component-level theming
+- Platform-specific styling
+- Hover effects for web
 
 ## 🚦 Getting Started
 
@@ -69,67 +98,47 @@ git clone https://github.com/your-username/pantry-chef.git
 npm install
 ```
 
-3. Configure environment:
-   1. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-   
-   2. Find your local IP address:
-   ```bash
-   # On Windows
-   ipconfig
-   # Look for IPv4 Address under your active network adapter
-
-   # On macOS/Linux
-   ifconfig
-   # Look for inet under your active network adapter (usually en0 or wlan0)
-   ```
-
-   3. Update your `.env` file with your IP:
-   ```env
-   API_URL=http://your-ip:3000/api
-   ```
-
-4. Start the development server:
+3. Start the development server:
 ```bash
 npm start
 ```
 
 4. Run on your preferred platform:
 ```bash
-# iOS
-npm run ios
-
-# Android
-npm run android
-
-# Web
-npm run web
+npm run ios     # iOS
+npm run android # Android
+npm run web     # Web
 ```
 
-## 🎨 Theming
+## 📝 Development Practices
 
-The app includes a comprehensive theming system with support for:
-- Light/Dark mode
-- Consistent spacing
-- Typography scales
-- Color palettes
-- Component-level theming
+### Conventional Commits
 
-## 📱 Current Features
+We follow [Conventional Commits](https://www.conventionalcommits.org/) specification:
 
-- Search interface for ingredients
-- Responsive design
-- Dark mode support
-- Themed components
+Types:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Style changes
+- `refactor`: Code refactoring
+- `test`: Testing changes
+- `chore`: Build/config changes
 
-## 🔜 Coming Soon
+Example:
+```bash
+feat(favorites): add favorites functionality with zustand
+style(layout): improve spacing and mobile responsiveness
+```
 
-- Recipe search functionality
-- Ingredient suggestions
-- Recipe details view
-- Favorites system
+## 🔜 Future Enhancements
+
+- Recipe filtering by dietary restrictions
+- Shopping list generation
+- Social sharing features
+- User ratings and reviews
+- Offline support
+- Recipe collections/categories
 
 ## 📄 License
 
